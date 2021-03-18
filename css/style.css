@@ -7,3 +7,29 @@
 body{
   font-family: 'Roboto', sans-serif;
 }
+
+header{
+  text-align: center;
+  margin: 20px 0
+}
+
+.container{
+  background: coral;
+  border: 3px solid pink;
+  border-radius: 20px;
+  width: 70%;
+  margin: auto;
+  padding: 20px;
+
+}
+
+
+.template{
+  display: none;
+}
+
+.cancel-icon{
+  font-size: 18px;
+  padding: 0 6px;
+  color: purple;
+}
