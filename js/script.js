@@ -1,4 +1,14 @@
 
+// PROVO A DEFINIIRE UNA FUNZIONE PER NON RIPETERE SEMPRE LA CLONAZIONE:
+// Miracolo: ha funzionato XD
+
+function clonaAggiungi(clone, aggiunta, posto){
+  var templateItem = $(clone).clone();
+  templateItem.prepend(aggiunta);
+  $(posto).append(templateItem);
+}
+
+
 // definisco l'oggetto con gli elementi li di partenza.
 
 var activities = [
@@ -14,10 +24,17 @@ var activities = [
 
 for (var i = 0; i < activities.length; i++) {
 
-  var templateItem = $(".template > li").clone();
-  templateItem.prepend(activities[i]);
-  $(".to-do").append(templateItem);
+  // qui uso la funzione fatta ad hoc come prova
+  clonaAggiungi(".template > li", activities[i], ".to-do");
+
 }
+
+//  QUESTO COMMENTATO ERA IL METODO ORIGINALE CORRETTO
+
+//   var templateItem = $(".template > li").clone();
+//   templateItem.prepend(activities[i]);
+//   $(".to-do").append(templateItem);
+// }
 
 // IMPOSTARE L'AGGIUNTA DI NUOVI ELEMENTI ALLA LISTA
 // Uso la funzione keydown e la metto in ascolto su un evento nel campo Input #add-activity;
@@ -37,16 +54,29 @@ $("#add-activity").keydown(function(event){
 
     if (testo != "") {
 
-      var templateItem = $(".template > li").clone();
-      templateItem.prepend(testo);
-      $(".to-do").append(templateItem);
+      // qui uso la funzione fatta ad hoc come prova
+      clonaAggiungi(".template > li", testo, ".to-do" );
       $(this).val("");
+
+      //  QUESTO COMMENTATO ERA IL METODO ORIGINALE CORRETTO
+
+      // var templateItem = $(".template > li").clone();
+      // templateItem.prepend(testo);
+      // $(".to-do").append(templateItem);
+      // $(this).val("");
     }
   }
 
 });
 
 // AGGIUNGO UNA FUNZIONE PER RIMUOVERE UN'ATTIVITA CLICCANDO SULLA X
+
+// uso ON. per mettere in ascolto l'UL to - do al click;
+// Il click deve avvenire sullo span .delete-item e triggera la funzione evento definita, prossima
+// rimuovo con .remove() il genitore del this (ossia il LI che contiene lo SPAN su cui si è cliccato).
+//In questo modo è possibile rimuovere anche elementi successivamente inseriti alla lista tramite l Input
+// questo perché on click fa rimanere in ascolto un elemento anche dopo che la pagina è stata caricata e
+// lo script di base eseguito.
 
 $(".to-do").on("click", ".delete-item", function(){
   $(this).parent("li").remove()
