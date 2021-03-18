@@ -40,7 +40,14 @@ $("#add-activity").keydown(function(event){
       var templateItem = $(".template > li").clone();
       templateItem.prepend(testo);
       $(".to-do").append(templateItem);
+      $(this).val("");
     }
   }
 
+});
+
+// AGGIUNGO UNA FUNZIONE PER RIMUOVERE UN'ATTIVITA CLICCANDO SULLA X
+
+$(".to-do").on("click", ".delete-item", function(){
+  $(this).parent("li").remove()
 });
