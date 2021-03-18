@@ -10,7 +10,7 @@ var activities = [
 
 for (var i = 0; i < activities.length; i++) {
 
-  var templateItem = $(".template-item").clone();
+  var templateItem = $(".template > li").clone();
   templateItem.prepend(activities[i]);
   $(".to-do").append(templateItem);
 }
