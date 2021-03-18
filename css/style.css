@@ -46,7 +46,7 @@ header{
   padding: 50px 0
 }
 
-input.add-activity{
+#add-activity{
   width: 500px;
   height: 35px;
   padding: 0 10px;
